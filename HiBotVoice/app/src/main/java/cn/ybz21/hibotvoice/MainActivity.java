@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecordButton btn;
     ProgressDialog mProgress;
     List<String> paths;
-    String uploadHost = "http://192.168.0.102:8080/HiBotServer/appUp.action";
+    String uploadHost = "http://192.168.0.101:8080/HiBotServer/appUp.action";
     String path = StaticValues.path + "aa.amr";
     Handler mHandler = new Handler() {
         @Override

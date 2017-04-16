@@ -18,9 +18,10 @@ import edu.wpi.rail.jrosbridge.messages.geometry.Twist;
 public class VoiceNav {
 	private String TOPIC_NAME = "/cmd_vel_mux/input/teleop";
 	private String Mes_TYPE = "geometry_msgs/Twist";
-	Ros ros = new Ros("172.20.10.5");
+	Ros ros = new Ros("192.168.0.103");
 	Topic cmdVelPub = new Topic(ros, TOPIC_NAME, Mes_TYPE);
-	Twist twist = null;
+	Twist twist = Twist
+			.fromJsonString("{\"linear\": {\"x\": 0},\"angular\":{\"z\":0}}");;
     int count = 0;
    // boolean stop = false;
 	private HashMap<String, Object> cmdMap;
@@ -28,11 +29,13 @@ public class VoiceNav {
 	public VoiceNav() {
 		ros.connect();
 		cmdMap = new HashMap<String, Object>();
-		cmdMap.put("forward", "向前走，");
-		cmdMap.put("turnRight", "向右转，");
-		cmdMap.put("turnLeft", "向左转，");
-		cmdMap.put("backward", "向后走，");
-		cmdMap.put("stop", "停下，");
+		cmdMap.put("forward", "前进，");
+	
+		
+		cmdMap.put("turnRight", "右转，");
+		cmdMap.put("turnLeft", "左转，");
+		cmdMap.put("backward", "后退，");
+		cmdMap.put("stop", "停止，");
 
 	}
 
@@ -69,10 +72,10 @@ public class VoiceNav {
 					.fromJsonString("{\"linear\": {\"x\": 0.1},\"angular\":{\"z\":0}}");
 		} else if (cmd == "turnLeft") {
 			twist = Twist
-					.fromJsonString("{\"linear\": {\"x\": 0.1},\"angular\": {\"z\": 0.5}}");
+					.fromJsonString("{\"linear\": {\"x\": 0.1},\"angular\": {\"z\": 0.3}}");
 		} else if (cmd == "turnRight") {
 			twist = Twist
-					.fromJsonString("{\"linear\": {\"x\": 0.1},\"angular\": {\"z\": -0.5}}");
+					.fromJsonString("{\"linear\": {\"x\": 0.1},\"angular\": {\"z\": -0.3}}");
 		} else if (cmd == "backward") {
 			twist = Twist
 					.fromJsonString("{\"linear\": {\"x\": -0.1},\"angular\":{\"z\":0}}");
