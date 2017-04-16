@@ -5,7 +5,7 @@ import edu.wpi.rail.jrosbridge.Topic;
 import edu.wpi.rail.jrosbridge.messages.Message;
 import edu.wpi.rail.jrosbridge.messages.geometry.Twist;
 
-
+//向前走一米。
 public class Forward {
 
 	//How fast will we update the robot's movement?
