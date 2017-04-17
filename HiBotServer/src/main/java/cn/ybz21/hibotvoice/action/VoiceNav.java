@@ -29,13 +29,13 @@ public class VoiceNav {
 	public VoiceNav() {
 		ros.connect();
 		cmdMap = new HashMap<String, Object>();
-		cmdMap.put("forward", "前进，");
-	
-		
-		cmdMap.put("turnRight", "右转，");
-		cmdMap.put("turnLeft", "左转，");
-		cmdMap.put("backward", "后退，");
-		cmdMap.put("stop", "停止，");
+		cmdMap.put( "前进，","forward");
+		cmdMap.put( "钱，","forward");
+		cmdMap.put( "钱静，","forward");
+		cmdMap.put( "右转，","turnRight");
+		cmdMap.put( "左转，","turnLeft");
+		cmdMap.put("后退，","backward" );
+		cmdMap.put("停止，","stop");
 
 	}
 
@@ -50,9 +50,9 @@ public class VoiceNav {
 		boolean noCmd = true;
 		while (it.hasNext() && noCmd) {
 			Map.Entry entry = (Map.Entry) it.next();
-			Object obj = entry.getValue();
+			Object obj = entry.getKey();
 			if (obj != null && obj.equals(speech)) {
-				cmd = (String) entry.getKey();// 搜索命令
+				cmd = (String) entry.getValue();// 搜索命令
 				noCmd = false;
 			}
 		}
