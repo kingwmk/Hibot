@@ -23,7 +23,7 @@ public class VoiceNav {
 	Twist twist = new Twist();
 			
     int count = 0;
-    boolean stop = false;
+    //boolean stop = false;
 	private HashMap<String, Object> cmdMap;
 
 	public VoiceNav() {
@@ -31,6 +31,7 @@ public class VoiceNav {
 		cmdMap = new HashMap<String, Object>();
 
 		cmdMap.put( "前进，","forward");
+		cmdMap.put( "向前走，","forward");
 		cmdMap.put( "钱，","forward");
 		cmdMap.put( "钱静，","forward");
 		cmdMap.put( "右转，","turnRight");
@@ -83,7 +84,8 @@ public class VoiceNav {
 					.fromJsonString("{\"linear\": {\"x\": -0.1},\"angular\":{\"z\":0}}");
 		} else if (cmd == "stop") {
 			twist = new Twist();
-			stop = true;
+			System.out.println("Turtlebot结束运动。");//////
+			//stop = true;
 			
 		}
 		return twist;
@@ -92,12 +94,11 @@ public class VoiceNav {
 	public void move(String speech) {
 
 		twist = speechCallback(speech);
-		final int i =0;
 		if(count ==0)
 		{
 		new Thread() {
 			public void run() {
-				while ( !stop )  {
+				while ( true)  {
 					cmdVelPub.publish(twist);
 					System.out.println(twist.getLinear());
 					try {
@@ -113,8 +114,7 @@ public class VoiceNav {
 		else{
 			twist = speechCallback(speech); 
 			}
-		System.out.println("Turtlebot结束运动。");//////
-		cmdVelPub.publish(twist);////////
+		
 		
 		
 		// ros.disconnect();
