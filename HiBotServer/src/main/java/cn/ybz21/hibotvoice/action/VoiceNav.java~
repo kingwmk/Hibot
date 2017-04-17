@@ -23,7 +23,7 @@ public class VoiceNav {
 	Twist twist = new Twist();
 			
     int count = 0;
-    boolean stop = false;
+    boolean stop = true;
 	private HashMap<String, Object> cmdMap;
 
 	public VoiceNav() {
