@@ -1,0 +1,10 @@
+前进，:forward,
+向前走，:forward
+钱，:forward
+钱静，:forward
+前景，:forward
+右转，:turnRight
+左转，:turnLeft
+后退，:backward
+停止，:stop
+婷，:stop

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class CmdText {
 	//private static Map<String,String> CmdMap = new HashMap<String,String>();
-	private static String filePath = "/home/cherylpan/speechfile/speechCmd.txt";//语音命令对应存储文件
+	private static String filePath = "./file/speechCmd.txt";//语音命令对应存储文件
 	public static Map<String,String> readTextFile() {
 		Map<String,String> CmdMap = new HashMap<String,String>();
 		try{
