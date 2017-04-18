@@ -18,7 +18,7 @@ import edu.wpi.rail.jrosbridge.messages.geometry.Twist;
 public class VoiceNav {
 	private String TOPIC_NAME = "/cmd_vel_mux/input/teleop";
 	private String Mes_TYPE = "geometry_msgs/Twist";
-	Ros ros = new Ros("192.168.0.103");
+	Ros ros= new Ros("192.168.0.102");
 	Topic cmdVelPub = new Topic(ros, TOPIC_NAME, Mes_TYPE);
 	Twist twist = Twist
 			.fromJsonString("{\"linear\": {\"x\": 0},\"angular\":{\"z\":0}}");;
@@ -36,6 +36,8 @@ public class VoiceNav {
 		cmdMap.put( "左转，","turnLeft");
 		cmdMap.put("后退，","backward" );
 		cmdMap.put("停止，","stop");
+		cmdMap.put("一号，", "no1");
+		cmdMap.put("二号，", "no2");
 
 	}
 
@@ -66,6 +68,18 @@ public class VoiceNav {
 		System.out.println("Command:  " + cmd+"the count :\t" +count);
 		// Twist twist = null;
 		// String cmdJson;
+		if(cmd =="no1"){
+//			ros.disconnect();
+			ros=new Ros("192.168.0.102");
+			cmdVelPub = new Topic(ros, TOPIC_NAME, Mes_TYPE);
+			System.out.println("AAAAAAAAAAAA");
+		}
+		if(cmd =="no2"){
+//			ros.disconnect();
+		  	ros=new Ros("192.168.0.103");
+			cmdVelPub = new Topic(ros, TOPIC_NAME, Mes_TYPE);
+			System.out.println("BBBBBBBBBBB");
+		}
 		if (cmd == "forward") {
 			// 初始化一定要linear和angular都有
 			twist = Twist
