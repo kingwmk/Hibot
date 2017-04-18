@@ -18,8 +18,8 @@ import edu.wpi.rail.jrosbridge.messages.geometry.Twist;
 public class VoiceNav {
 	private String TOPIC_NAME = "/cmd_vel_mux/input/teleop";
 	private String Mes_TYPE = "geometry_msgs/Twist";
-
-	Ros ros = new Ros("172.20.10.5");
+	Ros ros= new Ros("192.168.0.102");
+//	Ros ros = new Ros("172.20.10.5");
 
 	Topic cmdVelPub = new Topic(ros, TOPIC_NAME, Mes_TYPE);
 	Twist twist = new Twist();
