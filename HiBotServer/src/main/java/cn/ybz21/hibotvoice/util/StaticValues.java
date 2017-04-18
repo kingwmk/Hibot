@@ -11,4 +11,5 @@ public class StaticValues {
 //	public static final String PATH_ATTACH = PATH + "D:/upload/img";
 	public static final String PATH_ATTACH = "/home/cherylpan/upload";
 	public static final String PATH_ATTACH_REFLECT = "/upload/img";
+	public static final String SPEECH_TXT_PATH = "/home/cherylpan/speechfile/speechCmd.txt ";
 }
