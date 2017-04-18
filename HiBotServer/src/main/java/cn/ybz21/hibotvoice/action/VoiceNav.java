@@ -24,20 +24,20 @@ public class VoiceNav {
 			
     int count = 0;
     //boolean stop = false;
-	private HashMap<String, Object> cmdMap;
+	private HashMap<String, String> cmdMap;
 
 	public VoiceNav() {
 		ros.connect();
-		cmdMap = new HashMap<String, Object>();
+		cmdMap = new HashMap<String, String>();
 
-		cmdMap.put( "前进，","forward");
+		/*cmdMap.put( "前进，","forward");
 		cmdMap.put( "向前走，","forward");
 		cmdMap.put( "钱，","forward");
 		cmdMap.put( "钱静，","forward");
 		cmdMap.put( "右转，","turnRight");
 		cmdMap.put( "左转，","turnLeft");
 		cmdMap.put("后退，","backward" );
-		cmdMap.put("停止，","stop");
+		cmdMap.put("停止，","stop");*/
 
 
 	}
@@ -45,8 +45,10 @@ public class VoiceNav {
 	// Attempt to match the recognized word or phrases to the cmdMap dictionary
 	// and return the appropriate command.
 	public String getCmd(String speech) {
+		
+		cmdMap = (HashMap<String, String>) CmdText.readTextFile();
 
-		Iterator<Entry<String, Object>> it = cmdMap.entrySet().iterator();
+		Iterator<Entry<String, String>> it = cmdMap.entrySet().iterator();
 		System.out.println(cmdMap.entrySet().size());// 输出5
 		// 返回命令
 		String cmd = "";
@@ -66,7 +68,7 @@ public class VoiceNav {
 	public Twist speechCallback(String speech) {
 		// get the motion command from the recognized phrase
 		String cmd = getCmd(speech);
-		System.out.println("Command:  " + cmd+"the count :\t" +count);
+		System.out.println("Command:  " + cmd+"\t the count :\t" +count);
 		// Twist twist = null;
 		// String cmdJson;
 		if (cmd == "forward") {
